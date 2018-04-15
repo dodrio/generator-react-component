@@ -1,6 +1,6 @@
 {
   "name": "@m31271n/generator-react-component",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Scaffold out a React component.",
   "license": "MIT",
   "repository": "m31271n/generator-react-component",
