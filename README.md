@@ -53,4 +53,4 @@ Use [chalk](https://github.com/sindresorhus/chalk) if you want colors in your CL
 
 ## License
 
-[MIT](https://stack.m31271n.com/licenses/MIT.txt) © [m31271n](http://stack.m31271n.com)
+[MIT](https://stack.m31271n.com/licenses/MIT.txt) © [m31271n](https://stack.m31271n.com)
