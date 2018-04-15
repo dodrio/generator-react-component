@@ -18,7 +18,7 @@
     "test": "<% if (nyc) { %>nyc <% } %>ava",
     "code-quality": "npm run lint && npm run test",
     "build": "babel --out-dir=dist src",
-    "publish":
+    "release":
       "npm run code-quality && rm -rf dist && npm run build && npm publish"
   },
   "files": ["dist"],
