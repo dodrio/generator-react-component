@@ -1,0 +1,5 @@
+node_modules<% if (nyc) { %>
+.nyc_output
+coverage<% } %>
+yarn.lock
+/dist
