@@ -1,0 +1,77 @@
+{
+  "name": "<%= moduleName %>",
+  "version": "0.0.0",
+  "description": "<%= moduleDescription %>",
+  "repository": "<%= githubUsername %>/<%= repoName %>",
+  "main": "./dist/index.js",
+  "author": {
+    "name": "<%= name %>",
+    "email": "<%= email %>",
+    "url": "<%= humanizedWebsite %>"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "eslint 'src/**/*.{js,jsx}' 'test/**/*.js'",
+    "test": "<% if (nyc) { %>nyc <% } %>ava",
+    "code-quality": "npm run lint && npm run test",
+    "build": "babel --out-dir=dist src",
+    "publish":
+      "npm run code-quality && rm -rf dist && npm run build && npm publish"
+  },
+  "files": ["dist"],
+  "keywords": [""],
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "devDependencies": {
+    "ava": "*",<% if (codecov) { %>
+    "codecov": "^2.2.0",<% } %><% if (nyc) { %>
+    "nyc": "^10.0.0",<% } %>
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
+    "prettier": "^1.12.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "babel": {
+    "plugins": ["transform-es2015-modules-commonjs"],
+    "presets": ["env", "react"]
+  },
+  "ava": {
+    "require": ["babel-register"],
+    "babel": "inherit"
+  },<% if (codecov) { %>
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },<% } %>
+  "lint-staged": {
+    "linters": {
+      "**/*.{js,jsx}": ["prettier --write", "eslint", "git add"],
+      "**/*.json": ["prettier --write", "git add"]
+    }
+  }
+}
