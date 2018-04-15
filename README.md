@@ -17,7 +17,7 @@ Features:
 ## Install
 
 ```
-$ npm install -g yo generator-react-component
+$ npm install -g yo @m31271n/generator-react-component
 ```
 
 ## Usage
