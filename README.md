@@ -25,13 +25,13 @@ $ npm install -g yo @m31271n/generator-react-component
 With [yo](https://github.com/yeoman/yo):
 
 ```
-$ yo react-component
+$ yo @m31271n/react-component
 ```
 
 There are multiple command-line options available:
 
 ```
-$ yo react-component --help
+$ yo @m31271n/react-component --help
 
 Usage:
   yo react-component [options]
