@@ -131,6 +131,7 @@ module.exports = class extends Generator {
         mv('npmrc', '.npmrc');
         mv('prettierrc.yml', '.prettierrc.yml');
         mv('travis.yml', '.travis.yml');
+        mv('storybook-config.js', '.storybook/config.js');
       });
   }
 

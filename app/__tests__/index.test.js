@@ -44,6 +44,8 @@ test('generates expected files', async () => {
     '.npmrc',
     '.prettierrc.yml',
     '.travis.yml',
+    'stories/',
+    '.storybook/config.js',
     'LICENSE',
   ]);
 });

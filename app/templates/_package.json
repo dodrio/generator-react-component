@@ -13,6 +13,7 @@
   },
   "scripts": {
     "precommit": "lint-staged",
+    "preview": "start-storybook -p 9001 -c .storybook",
     "lint": "eslint 'src/**/*.{js,jsx}'",
     "test": "<% if (nyc) { %>nyc <% } %>jest",
     "code-quality": "npm run lint && npm run test",
@@ -35,6 +36,7 @@
     "@babel/preset-react": "^7.0.0-beta.47",<% if (codecov) { %>
     "codecov": "^2.2.0",<% } %><% if (nyc) { %>
     "nyc": "^10.0.0",<% } %>
+    "@storybook/react": "^3.4.7",
     <%# test %>
     "jest": "^23.1.0",
     <%# babel-core's bridge version is necessary %>
