@@ -122,14 +122,14 @@ module.exports = class extends Generator {
           tpl
         );
 
+        mv('_package.json', 'package.json');
         mv('editorconfig', '.editorconfig');
+        mv('eslintrc.yml', '.eslintrc.yml');
         mv('gitattributes', '.gitattributes');
         mv('gitignore', '.gitignore');
-        mv('eslintrc.yml', '.eslintrc.yml');
+        mv('npmrc', '.npmrc');
         mv('prettierrc.yml', '.prettierrc.yml');
         mv('travis.yml', '.travis.yml');
-        mv('npmrc', '.npmrc');
-        mv('_package.json', 'package.json');
       });
   }
 

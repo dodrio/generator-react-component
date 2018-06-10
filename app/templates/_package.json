@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "<%= moduleDescription %>",
   "repository": "<%= githubUsername %>/<%= repoName %>",
-  "main": "./dist/index.js",
   "author": {
     "name": "<%= name %>",
     "email": "<%= email %>",
@@ -15,40 +14,50 @@
   "scripts": {
     "precommit": "lint-staged",
     "lint": "eslint 'src/**/*.{js,jsx}' 'test/**/*.js'",
-    "test": "<% if (nyc) { %>nyc <% } %>ava",
+    "test": "<% if (nyc) { %>nyc <% } %>jest",
     "code-quality": "npm run lint && npm run test",
-    "build": "babel --out-dir=dist src",
+    "build": "rm -rf dist && babel src -d dist",
     "release":
-      "npm run code-quality && rm -rf dist && npm run build && npm publish"
+      "npm run code-quality && npm run build && npm publish"
   },
   "files": ["dist"],
+  "main": "dist/index.js",
   "keywords": [""],
   "dependencies": {
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "ava": "*",<% if (codecov) { %>
+    <%# transpile %>
+    "@babel/cli": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0-beta.47",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-react": "^7.0.0-beta.47",<% if (codecov) { %>
     "codecov": "^2.2.0",<% } %><% if (nyc) { %>
     "nyc": "^10.0.0",<% } %>
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.3",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "browser-env": "^3.2.5",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    <%# test %>
+    "jest": "^23.1.0",
+    "babel-jest": "^23.0.1",
+    "babel-core": "^7.0.0-0",
+    "react-test-renderer": "^16.4.0",
+    "regenerator-runtime": "^0.11.1",
+    <%# lint %>
     "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
+    <%# lint - react %>
     "eslint-config-react-app": "^2.1.0",
+    "babel-eslint": "^7.2.3",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.1.0",
+    <%# lint - prettier %>
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.0",
+    <%# git hook %>
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
-    "prettier": "^1.12.0",
+    <%# react %>
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -56,12 +65,8 @@
     "react": ">=16"
   },
   "babel": {
-    "plugins": ["transform-es2015-modules-commonjs"],
-    "presets": ["env", "react"]
-  },
-  "ava": {
-    "require": ["babel-register"],
-    "babel": "inherit"
+    "plugins": ["@babel/plugin-transform-modules-commonjs"],
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
   },<% if (codecov) { %>
   "nyc": {
     "reporter": [
