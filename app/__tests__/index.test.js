@@ -35,6 +35,7 @@ test('generates expected files', async () => {
     'src/__tests__/index.test.jsx',
     'README.md',
     'package.json',
+    '.babelrc',
     '.editorconfig',
     '.eslintrc.yml',
     '.gitattributes',

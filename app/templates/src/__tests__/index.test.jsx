@@ -1,5 +1,5 @@
 import React from 'react';
-import <%= camelComponentName %> from '.';
+import <%= camelComponentName %> from '..';
 import renderer from 'react-test-renderer';
 
 test('simple call', () => {
