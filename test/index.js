@@ -37,7 +37,7 @@ test.serial('generates expected files', async () => {
     '.prettierrc.yml',
     '.travis.yml',
     'src/index.jsx',
-    'test/index.js',
+    'src/index.test.jsx',
     'package.json',
     'README.md',
     'LICENSE',
