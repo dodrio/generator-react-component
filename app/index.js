@@ -123,6 +123,7 @@ module.exports = class extends Generator {
         );
 
         mv('_package.json', 'package.json');
+        mv('babelrc', '.babelrc');
         mv('editorconfig', '.editorconfig');
         mv('eslintrc.yml', '.eslintrc.yml');
         mv('gitattributes', '.gitattributes');

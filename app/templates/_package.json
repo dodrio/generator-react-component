@@ -13,10 +13,10 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "lint": "eslint 'src/**/*.{js,jsx}' 'test/**/*.js'",
+    "lint": "eslint 'src/**/*.{js,jsx}'",
     "test": "<% if (nyc) { %>nyc <% } %>jest",
     "code-quality": "npm run lint && npm run test",
-    "build": "rm -rf dist && babel src -d dist",
+    "build": "rm -rf dist && babel src --ignore '**/__tests__/**' -d dist",
     "release":
       "npm run code-quality && npm run build && npm publish"
   },
@@ -37,9 +37,9 @@
     "nyc": "^10.0.0",<% } %>
     <%# test %>
     "jest": "^23.1.0",
+    <%# babel-core's bridge version is necessary %>
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
-    <%# babel-core is necessary when using babel version 7 %>
-    "babel-core": "^7.0.0-0",
     "react-test-renderer": "^16.4.0",
     <%# lint %>
     "eslint": "^4.19.1",
@@ -63,10 +63,6 @@
   },
   "peerDependencies": {
     "react": ">=16"
-  },
-  "babel": {
-    "plugins": ["@babel/plugin-transform-modules-commonjs"],
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
   },<% if (codecov) { %>
   "nyc": {
     "reporter": [

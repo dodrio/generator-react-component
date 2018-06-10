@@ -17,6 +17,8 @@ Features:
   * [Jest](https://facebook.github.io/jest/)
   * optional test coverage
 * git pre commit hook
+* preview
+  * [storybook](https://github.com/storybooks/storybook)
 
 ## Install
 
