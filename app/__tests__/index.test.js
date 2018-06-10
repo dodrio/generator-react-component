@@ -1,17 +1,19 @@
-import path from 'path';
-import test from 'ava';
-import helpers from 'yeoman-test';
-import assert from 'yeoman-assert';
-import pify from 'pify';
-import utils from '../app/utils';
+/* eslint-env jest */
+
+const os = require('os');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const pify = require('pify');
+const utils = require('../utils');
 
 let generator;
 
-test.beforeEach(async () => {
-  await pify(helpers.testDirectory)(path.join(__dirname, 'temp'));
+beforeEach(async () => {
+  await pify(helpers.testDirectory)(path.join(os.tmpdir(), 'temp'));
   generator = helpers.createGenerator(
     'react-component:app',
-    ['../../app'],
+    [path.join(__dirname, '..')],
     null,
     {
       skipInstall: true,
@@ -19,7 +21,7 @@ test.beforeEach(async () => {
   );
 });
 
-test.serial('generates expected files', async () => {
+test('generates expected files', async () => {
   helpers.mockPrompt(generator, {
     moduleName: 'test',
     githubUsername: 'test',
@@ -29,23 +31,23 @@ test.serial('generates expected files', async () => {
   await pify(generator.run.bind(generator))();
 
   assert.file([
+    'src/index.jsx',
+    'src/__tests__/index.test.jsx',
+    'README.md',
+    'package.json',
     '.editorconfig',
-    '.git',
+    '.eslintrc.yml',
     '.gitattributes',
     '.gitignore',
-    '.eslintrc.yml',
+    '.git',
+    '.npmrc',
     '.prettierrc.yml',
     '.travis.yml',
-    'src/index.jsx',
-    'src/index.test.jsx',
-    'package.json',
-    'README.md',
     'LICENSE',
-    '.npmrc',
   ]);
 });
 
-test.serial('nyc option', async () => {
+test('nyc option', async () => {
   helpers.mockPrompt(generator, {
     moduleName: 'test',
     githubUsername: 'test',
@@ -66,7 +68,7 @@ test.serial('nyc option', async () => {
   assert.noFileContent('.travis.yml', /codecov/);
 });
 
-test.serial('codecov option', async () => {
+test('codecov option', async () => {
   helpers.mockPrompt(generator, {
     moduleName: 'test',
     githubUsername: 'test',
@@ -87,25 +89,16 @@ test.serial('codecov option', async () => {
   assert.fileContent('.travis.yml', /codecov/);
 });
 
-test('parse scoped package names', t => {
-  t.is(
-    utils.slugifyPackageName('author/thing'),
-    'author-thing',
-    'slugify non-scoped packages'
-  );
-  t.is(
-    utils.slugifyPackageName('@author/thing'),
-    '@author/thing',
-    'accept scoped packages'
-  );
-  t.is(
-    utils.slugifyPackageName('@author/hi/there'),
-    'author-hi-there',
-    'fall back to regular slugify if invalid scoped name'
-  );
+test('parse scoped package names', () => {
+  // slugify non-scoped packages
+  expect(utils.slugifyPackageName('author/thing')).toBe('author-thing');
+  // accept scoped packages
+  expect(utils.slugifyPackageName('@author/thing')).toBe('@author/thing');
+  // fall back to regular slugify if invalid scoped name
+  expect(utils.slugifyPackageName('@author/hi/there')).toBe('author-hi-there');
 });
 
-test.serial('prompts for description', async () => {
+test('prompts for description', async () => {
   helpers.mockPrompt(generator, {
     moduleName: 'test',
     moduleDescription: 'foo',
@@ -121,7 +114,7 @@ test.serial('prompts for description', async () => {
   assert.fileContent('README.md', /> foo/);
 });
 
-test.serial('defaults to superb description', async () => {
+test('default description', async () => {
   helpers.mockPrompt(generator, {
     moduleName: 'test',
     githubUsername: 'test',
