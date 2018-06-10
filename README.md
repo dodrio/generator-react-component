@@ -10,15 +10,17 @@
 
 Features:
 
-* linter:
+* Linter:
+  * [ESLint](https://eslint.org/) with `eslint-config-react-app`
+* Formatter
   * [Prettier](https://prettier.io/)
-  * eslint-config-react-app
-* test
+* Test Runner
   * [Jest](https://facebook.github.io/jest/)
-  * optional test coverage
-* git pre commit hook
-* preview
-  * [storybook](https://github.com/storybooks/storybook)
+  * [Nyc](https://github.com/istanbuljs/nyc)(optional) - test coverage
+* Git Hooks
+  * pre commit
+* Preview
+  * [Storybook](https://github.com/storybooks/storybook)
 
 ## Install
 
