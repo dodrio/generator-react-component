@@ -38,9 +38,9 @@
     <%# test %>
     "jest": "^23.1.0",
     "babel-jest": "^23.0.1",
+    <%# babel-core is necessary when using babel version 7 %>
     "babel-core": "^7.0.0-0",
     "react-test-renderer": "^16.4.0",
-    "regenerator-runtime": "^0.11.1",
     <%# lint %>
     "eslint": "^4.19.1",
     <%# lint - react %>

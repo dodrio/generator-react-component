@@ -10,9 +10,13 @@
 
 Features:
 
-* [Prettier](https://prettier.io/) code formatter
-* Git pre commit hook
-* Optional test coverage
+* linter:
+  * [Prettier](https://prettier.io/)
+  * eslint-config-react-app
+* test
+  * [Jest](https://facebook.github.io/jest/)
+  * optional test coverage
+* git pre commit hook
 
 ## Install
 
