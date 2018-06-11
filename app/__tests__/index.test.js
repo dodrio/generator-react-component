@@ -32,7 +32,6 @@ test('generates expected files', async () => {
 
   assert.file([
     'src/index.jsx',
-    'src/__tests__/index.test.jsx',
     'README.md',
     'package.json',
     '.babelrc',
