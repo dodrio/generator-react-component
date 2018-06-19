@@ -17,7 +17,7 @@ Features:
 * Git Hooks
   * pre commit
 * Preview
-  * [Storybook](https://github.com/storybooks/storybook) integrated with \* [Jest](https://facebook.github.io/jest/)
+  * [Storybook](https://github.com/storybooks/storybook) integrated with [Jest](https://facebook.github.io/jest/)
 
 ## Install
 
