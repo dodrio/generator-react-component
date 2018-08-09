@@ -10,14 +10,11 @@
 
 Features:
 
-* Formatter
-  * [Prettier](https://prettier.io/)
-* Linter:
-  * [ESLint](https://eslint.org/) with `eslint-config-react-app`
-* Git Hooks
-  * pre commit
-* Preview
-  * [Storybook](https://github.com/storybooks/storybook) integrated with [Jest](https://facebook.github.io/jest/)
+* Code style without semicolon
+* [Prettier](https://prettier.io/) code formatter
+* Git pre commit hook
+* Preview via [Storybook](https://github.com/storybooks/storybook)
+* Test via [Jest](https://facebook.github.io/jest/)
 
 ## Install
 
@@ -37,20 +34,7 @@ There are multiple command-line options available:
 
 ```
 $ yo @m31271n/react-component --help
-
-Usage:
-  yo react-component [options]
-
-Options:
-  -h,   --help          # Print the generator's options and usage
-        --skip-cache    # Do not remember prompt answers                      Default: false
-        --skip-install  # Do not automatically install dependencies           Default: false
-        --org           # Publish to a GitHub organization account
-        --coverage      # Add code coverage with nyc
-        --codecov       # Upload coverage to codecov.io (implies coverage)
 ```
-
-The `--org` option takes a string value (i.e. `--org=2players`). All others are boolean flags and can be negated with the `no` prefix (i.e. `--no-codecov`). You will be prompted for any options not passed on the command-line.
 
 ## Tip
 
