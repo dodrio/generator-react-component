@@ -1,29 +1,29 @@
-'use strict';
+'use strict'
 
-const normalizeUrl = require('normalize-url');
-const humanizeUrl = require('humanize-url');
-const Generator = require('yeoman-generator');
-const _s = require('underscore.string');
-const utils = require('./utils');
+const normalizeUrl = require('normalize-url')
+const humanizeUrl = require('humanize-url')
+const Generator = require('yeoman-generator')
+const _s = require('underscore.string')
+const utils = require('./utils')
 
 module.exports = class extends Generator {
   constructor(a, b) {
-    super(a, b);
+    super(a, b)
 
     this.option('org', {
       type: 'string',
       desc: 'Publish to a GitHub organization account',
-    });
+    })
 
     this.option('coverage', {
       type: 'boolean',
       desc: 'Add code coverage with nyc',
-    });
+    })
 
     this.option('codecov', {
       type: 'boolean',
       desc: 'Upload coverage to codecov.io (implies coverage)',
-    });
+    })
   }
 
   init() {
@@ -77,14 +77,14 @@ module.exports = class extends Generator {
         const or = (option, prop) =>
           this.options[option] === undefined
             ? props[prop || option]
-            : this.options[option];
+            : this.options[option]
 
-        const codecov = or('codecov');
-        const nyc = codecov || or('coverage', 'nyc');
-        const repoName = utils.repoName(props.moduleName);
+        const codecov = or('codecov')
+        const nyc = codecov || or('coverage', 'nyc')
+        const repoName = utils.repoName(props.moduleName)
         const camelComponentName = _s.capitalize(
           _s.camelize(repoName.replace(/^react/, ''))
-        );
+        )
 
         const tpl = {
           moduleName: props.moduleName,
@@ -98,8 +98,8 @@ module.exports = class extends Generator {
           humanizedWebsite: humanizeUrl(props.website),
           nyc,
           codecov,
-        };
-        return tpl;
+        }
+        return tpl
       })
       .then(tpl => {
         // import generator-license
@@ -108,34 +108,34 @@ module.exports = class extends Generator {
           email: tpl.email,
           website: tpl.website,
           defaultLicense: 'MIT',
-        });
-        return tpl;
+        })
+        return tpl
       })
       .then(tpl => {
         const mv = (from, to) => {
-          this.fs.move(this.destinationPath(from), this.destinationPath(to));
-        };
+          this.fs.move(this.destinationPath(from), this.destinationPath(to))
+        }
 
         this.fs.copyTpl(
           [`${this.templatePath()}/**`],
           this.destinationPath(),
           tpl
-        );
+        )
 
-        mv('_package.json', 'package.json');
-        mv('babelrc', '.babelrc');
-        mv('editorconfig', '.editorconfig');
-        mv('eslintrc.yml', '.eslintrc.yml');
-        mv('gitattributes', '.gitattributes');
-        mv('gitignore', '.gitignore');
-        mv('npmrc', '.npmrc');
-        mv('prettierrc.yml', '.prettierrc.yml');
-        mv('travis.yml', '.travis.yml');
-        mv('storybook-config.js', '.storybook/config.js');
-      });
+        mv('_package.json', 'package.json')
+        mv('babelrc', '.babelrc')
+        mv('editorconfig', '.editorconfig')
+        mv('eslintrc.yml', '.eslintrc.yml')
+        mv('gitattributes', '.gitattributes')
+        mv('gitignore', '.gitignore')
+        mv('npmrc', '.npmrc')
+        mv('prettierrc.yml', '.prettierrc.yml')
+        mv('travis.yml', '.travis.yml')
+        mv('storybook-config.js', '.storybook/config.js')
+      })
   }
 
   git() {
-    this.spawnCommandSync('git', ['init']);
+    this.spawnCommandSync('git', ['init'])
   }
-};
+}
