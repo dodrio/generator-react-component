@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 class <%= camelComponentName %> extends React.Component {
   render() {
-    const { content } = this.props;
-    return <div>{content}</div>;
+    const { content } = this.props
+    return <div>{content}</div>
   }
 }
 
 <%= camelComponentName %>.propTypes = {
   content: PropTypes.string.isRequired,
-};
+}
 
-export default <%= camelComponentName %>;
+export default <%= camelComponentName %>

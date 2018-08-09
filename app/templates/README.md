@@ -18,8 +18,8 @@ $ npm install <%= moduleName %>
 ## Usage
 
 ```jsx
-import React from 'react';
-import <%= camelComponentName %> from '<%= moduleName %>';
+import React from 'react'
+import <%= camelComponentName %> from '<%= moduleName %>'
 
 class App extends React.Component {
   render() {

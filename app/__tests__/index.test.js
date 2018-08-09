@@ -35,6 +35,7 @@ test('generates expected files', async () => {
     'README.md',
     'package.json',
     '.babelrc',
+    '.browserslistrc',
     '.editorconfig',
     '.eslintrc.yml',
     '.gitattributes',
