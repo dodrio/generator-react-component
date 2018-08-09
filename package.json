@@ -52,6 +52,10 @@
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
   },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "lint-staged": {
     "ignore": [
       "app/templates/**"
