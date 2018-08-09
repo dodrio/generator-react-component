@@ -75,6 +75,10 @@
       "text"
     ]
   },<% } %>
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": ["prettier --write", "eslint", "git add"],
